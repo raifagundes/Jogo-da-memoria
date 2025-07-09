@@ -1,10 +1,13 @@
 import random
 import time
 
+# (Bibliotecas importadas por Rodrigo)
+
 # =======================================================================
 # Par Alimentício: Jogo da Memória de Comidas em Python (Versão Terminal)
 # =======================================================================
 
+# (Raiane) Entrada do Jogador.
 jogador = input("Digite seu nome: ")
 
 # (Rodrigo) Cria o tabuleiro embaralhado com os pares de emojis.

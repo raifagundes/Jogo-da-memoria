@@ -7,7 +7,7 @@ import time
 
 jogador = input("Digite seu nome: ")
 
-# Cria o tabuleiro embaralhado com os pares de emojis.
+# (Rodrigo) Cria o tabuleiro embaralhado com os pares de emojis.
 def criar_tabuleiro(tamanho):
     emojis = ['🍎', '🍌', '🍇', '🍓', '🍒', '🍍', '🥝', '🍉',
               '🥑', '🍑', '🍋', '🍊', '🫐', '🥥', '🌽', '🥕',
@@ -20,7 +20,7 @@ def criar_tabuleiro(tamanho):
     random.shuffle(todos_emojis)
     return [todos_emojis[i * tamanho:(i + 1) * tamanho] for i in range(tamanho)]
 
-# Exibe o tabuleiro, mostrando as cartas viradas ou ocultas
+# (Rodrigo) Exibe o tabuleiro, mostrando as cartas viradas ou ocultas
 def mostrar_tabuleiro(tabuleiro, visivel):
     print(" " + " ".join([f'{i:2}' for i in range(len(tabuleiro[0]))]))
     for i, linha in enumerate(tabuleiro):
@@ -29,11 +29,11 @@ def mostrar_tabuleiro(tabuleiro, visivel):
             row += f'{simbolo if visivel[i][j] else "⬜":2}'
         print(row)
 
-# Verifica se as cartas escolhidas formam um par
+# (Rodrigo) Verifica se as cartas escolhidas formam um par
 def verificar_par(tabuleiro, x1, y1, x2, y2):
     return tabuleiro[x1][y1] == tabuleiro[x2][y2]
 
-# Executa um nível do Jogo da Memória
+# (Rodrigo) Executa um nível do Jogo da Memória
 def jogar_nivel(nivel, tamanho_linhas, tamanho_colunas, tempo_limite=600, obter_coordenadas=None):
     print(f"Seja bem-vindo(a) {jogador} ao Nível {nivel} - Tabuleiro de {tamanho_linhas}x{tamanho_colunas}.")
     tabuleiro = criar_tabuleiro(tamanho_linhas)
@@ -70,7 +70,7 @@ def jogar_nivel(nivel, tamanho_linhas, tamanho_colunas, tempo_limite=600, obter_
     print(f" Nível {nivel} vencido em {tentativas} tentativas!")
     return True, tentativas
 
-# Executa o Jogo da Memória até completar todos os níveis ou o tempo acabar
+# (Rodrigo) Executa o Jogo da Memória até completar todos os níveis ou o tempo acabar
 def jogo_da_memoria(obter_coordenadas=None):
     niveis = [
         (4, 4),
@@ -93,7 +93,7 @@ def jogo_da_memoria(obter_coordenadas=None):
     print(f" Tempo total de jogo: {tempo_total // 60} minutos e {tempo_total % 60} segundos.")
     return total_tentativas, tempo_total  # <-- Retorne dois valores aqui
 
-# Solicita que o jogador informe as coordenadas corretas (Pares ainda não virados) dentro do tabuleiro
+# (Raiane) Solicita que o jogador informe as coordenadas corretas (Pares ainda não virados) dentro do tabuleiro
 def obter_coordenadas(mensagem, linhas, colunas, visivel):
     while True:
         try:
@@ -107,11 +107,11 @@ def obter_coordenadas(mensagem, linhas, colunas, visivel):
                 print("Essa carta já está virada, escolha outra carta!")
         except ValueError:
             print("Entrada inválida, por favor digite dois números separados por espaço.")
-
+# (Raiane)
 def salvar_ranking(nome, tentativas, tempo_total):
     with open("ranking.txt", "a", encoding="utf-8") as arquivo:
         arquivo.write(f"{nome};{tentativas};{tempo_total}\n")
-
+# (Raiane)
 def mostrar_ranking():
     try:
         with open("ranking.txt", "r", encoding="utf-8") as arquivo:
@@ -135,7 +135,7 @@ def mostrar_ranking():
     except FileNotFoundError:
         print("⚠️ Ainda não há dados no ranking.")
 
-# --- INÍCIO DO JOGO ---
+# --- INÍCIO DO JOGO (Raiane) ---
 if __name__ == "__main__":
     total_tentativas, tempo_total = jogo_da_memoria(obter_coordenadas)
     if total_tentativas is not None and tempo_total is not None:
